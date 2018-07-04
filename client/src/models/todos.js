@@ -26,7 +26,7 @@ Todos.prototype.getData = function () {
 };
 
 Todos.prototype.postTodo = function (todo) {
-  const require = new Request(this.url);
+  const request = new Request(this.url);
   request.post(todo)
   .then((todos) => {
     PubSub.publish('Todos:data-loaded', todos);
@@ -35,7 +35,7 @@ Todos.prototype.postTodo = function (todo) {
 };
 
 Todos.prototype.deleteTodo = function (todoId) {
-  const require = new Request(this.url);
+  const request = new Request(this.url);
   request.delete(todoId)
   .then((todos) => {
     PubSub.publish('Todos:data-loaded', todos);
