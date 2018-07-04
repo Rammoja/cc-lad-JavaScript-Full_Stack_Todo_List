@@ -7,7 +7,13 @@ const Todos = function (url) {
 }
 
 Todos.prototype.bindEvents = function () {
+  PubSub.subscribe('TodoListView:todo-delete-clicked', (evt) => {
+    this.deleteTodo(evt.detail);
+  });
 
+  PubSub.subscribe('TodoFromView:todo-submitted', (evt) => {
+    this.postTodo(evt.detail);
+  });
 };
 
 Todos.prototype.getData = function () {
